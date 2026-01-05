@@ -1,0 +1,9 @@
+<h2>{{ business?.name }}</h2>
+<p>{{ business?.service_type }} - {{ business?.location }}</p>
+
+<h3>Submit a Review</h3>
+<textarea [value]="reviewText" (input)="reviewText = $any($event.target)?.value"></textarea>
+<select [value]="rating" (change)="rating = +$any($event.target)?.value">
+  <option *ngFor="let r of [1,2,3,4,5]" [value]="r">{{ r }}</option>
+</select>
+<button (click)="submitReview()">Submit Review</button>

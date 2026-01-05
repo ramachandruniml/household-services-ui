@@ -1,0 +1,28 @@
+<h2>Submit Your Business</h2>
+
+<div *ngIf="success" style="color: green;">
+  {{ success }}
+</div>
+
+<div *ngIf="error" style="color: red;">
+  {{ error }}
+</div>
+
+<form (ngSubmit)="submit()">
+  <div>
+    <label>Business Name</label><br />
+    <input type="text" [(ngModel)]="name" name="name" />
+  </div>
+
+  <div>
+    <label>Service Type</label><br />
+    <input type="text" [(ngModel)]="service" name="service" />
+  </div>
+
+  <div>
+    <label>Location</label><br />
+    <input type="text" [(ngModel)]="location" name="location" />
+  </div>
+
+  <button type="submit">Submit Business</button>
+</form>

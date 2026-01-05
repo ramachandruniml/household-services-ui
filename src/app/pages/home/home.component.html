@@ -1,0 +1,19 @@
+<h2>Find Household Services</h2>
+
+<!-- SEARCH BUTTON -->
+<div class = "home-buttons">
+  <button routerLink="/search">
+    Search Services
+  </button>
+  <button routerLink="/create-business">
+    Submit a Business
+  </button>
+</div>
+<hr />
+
+<h3>Verified Businesses</h3>
+
+<div *ngFor="let b of businesses">
+  <h4>{{ b.name }}</h4>
+  <p>{{ b.service }} — {{ b.location }}</p>
+</div>

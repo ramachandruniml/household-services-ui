@@ -1,0 +1,5 @@
+<h2>Admin Dashboard</h2>
+<div *ngFor="let b of pendingBusinesses">
+  <p>{{ b.name }} - {{ b.service_type }} - {{ b.location }}</p>
+  <button (click)="verify(b.id)">Verify</button>
+</div>
