@@ -4,25 +4,36 @@
       type="text"
       placeholder="plumber, electrician, roofer..."
       [(ngModel)]="service"
+      aria-label="Service"
+      (keyup.enter)="search()"
     />
 
     <input
       type="text"
       placeholder="city or zip code"
       [(ngModel)]="location"
+      aria-label="Location"
+      (keyup.enter)="search()"
     />
 
-    <button (click)="search()">Search</button>
+    <button type="button" (click)="search()" [disabled]="loading">Search</button>
   </div>
 </div>
 
 <div class="results">
-  <p *ngIf="loading">Searching...</p>
-  <p *ngIf="!loading && results.length === 0">No results found</p>
+  <div *ngIf="loading">
+    <p>Searching...</p>
+  </div>
 
-  <div class="card" *ngFor="let business of results">
-    <h3>{{ business.name }}</h3>
-    <p>{{ business.service_type }}</p>
-    <p>{{ business.location }}</p>
+  <div *ngIf="!loading && (!results || results.length === 0)">
+    <p>No results found</p>
+  </div>
+
+  <div *ngIf="!loading && results.length">
+    <div *ngFor="let business of results; let i = index" class="card">
+      <h3>{{ business.name }}</h3>
+      <p>{{ business.service_type }}</p>
+      <p>{{ business.location }}</p>
+    </div>
   </div>
 </div>
